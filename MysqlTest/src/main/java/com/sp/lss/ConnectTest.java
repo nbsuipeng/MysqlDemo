@@ -1,4 +1,6 @@
-package cpm.sp.lss;
+package com.sp.lss;
+
+
 
 import java.sql.*;
 
@@ -13,7 +15,7 @@ public class ConnectTest {
         //用户信息 jdbc:mysql://localhost/biao?characterEncoding=utf8
         String url="jdbc:mysql://127.0.0.1:3333/mysql?characterEncoding=utf8";
         String username="root";
-        String userpassword="";
+        String userpassword="root";
         //连接返回数据库连接对象
         Connection connection = DriverManager.getConnection(url, username, userpassword);
         //执行SQL
@@ -21,10 +23,14 @@ public class ConnectTest {
         String sql="select * from user";
         ResultSet resultSet = statement.executeQuery(sql);
         //必须得先执行next才能访问数据
+        int i=0;
         while(resultSet.next())
-            System.out.println(resultSet.getObject("address"));
+        {
+            System.out.println(resultSet.getObject(3));
+        }
         //释放连接
         statement.close();
         connection.close();
     }
 }
+
